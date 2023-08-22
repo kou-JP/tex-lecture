@@ -5,23 +5,23 @@
 \TeX はEを少し下げて字間を詰めて書き，それが難しい場合はTeXのようにeを小文字にしてTとXを大文字にして書きます．\TeX は技術や芸術を意味するギリシャ語の\ruby{τέχνη}{テクネー}に由来するので最後のXを/x/と発音します．/x/の音が存在しない言語においては近い音で代用されます．例えば，英語では/k/で代用することが多いようです．日本語では/ɸ/で代用して「テフ」と読むか，英語と同様に/k/で代用して「テック」と読むことが多いです．
 
 \subsection{\LaTeX とは？}
-\LaTeX はL. Lamportによって開発されたマクロパッケージです．マクロパッケージとは\TeX 言語を用いて組版するのに便利な機能を実装したもので\LaTeX の他にはplain \TeX や\ConTeXt などがあります．素の\TeX のみで組版するのは非常に大変なので通常これらのマクロパッケージを用います．このノートでは\LaTeX のみを対象として解説するので，\LaTeX は\TeX に機能を様々な追加したもので他にも色々な種類があるとだけ理解していれば十分です．
+\LaTeX はL. Lamportによって開発されたマクロパッケージです．マクロパッケージとは\TeX 言語を用いて組版するのに便利な機能を実装したもので\LaTeX の他にはplain \TeX や\ConTeXt などがあります．素の\TeX のみで組版するのは非常に大変なので通常これらのマクロパッケージを用います．このノートでは\LaTeX のみを対象として解説するので，\LaTeX は\TeX に様々な機能を追加したもので他にも色々な種類があるとだけ理解していれば十分です．
 
 \LaTeX も\TeX と同様に\LaTeX と書きますが，それが難しい場合はLaTeXと書きます．読み方に関して\TeX とは異なり好きに読んで構わないらしいです．日本語では「ラテフ」や「ラテック」と読む場合が多いです．英語では「レイテック」と読む人が多いらしいです．
 
-このノートの題名のように\LaTeXe というものも見かけるかもしれません．これは\LaTeX のバージョンを指しています．\LaTeXe の前後でtexファイルの構造が大きく異なるので区別してこのように表します\footnote{\LaTeXe よりも前の\LaTeX を\LaTeX 2.09と呼びます．\LaTeX 2.09では\texttt{\,\backslash documentclass}の代わりに\texttt{\,\backslash documentstyle}を使います．たまにネットで\texttt{\,\backslash documentstyle}から始まるtexファイルを見かけますが，それは古のtexファイルなので参考になりません．ちなみに\LaTeXe の誕生は1994年です．\texttt{\,\backslash documentclass}については@節で説明します．}．\LaTeXe と書くことが難しい場合はLaTeX2εやLaTeX2eと書きます．
+このノートの題名のように\LaTeXe というものも見かけるかもしれません．これは\LaTeX のバージョンを指しています．\LaTeXe の前後でtexファイルの構造が大きく異なるので区別してこのように表します\footnote{\LaTeXe よりも前の\LaTeX を\LaTeX 2.09と呼びます．\LaTeX 2.09では\,\texttt{\backslash documentclass}の代わりに\,\texttt{\backslash documentstyle}を使います．たまにネットで\,\texttt{\backslash documentstyle}から始まるtexファイルを見かけますが，それは古のtexファイルなので参考になりません．ちなみに\LaTeXe の誕生は1994年です．\,\texttt{\backslash documentclass}については@節で説明します．}．\LaTeXe と書くことが難しい場合はLaTeX2εやLaTeX2eと書きます．
 
 \subsection{\TeX エンジン}
 texファイルをdviファイルにタイプセットする\TeX の本体を\TeX エンジンと呼びます．元々の\TeX を拡張した様々な\TeX エンジンが存在しており，このノートでは\pTeX ，\upTeX ，\pdfTeX ，\LuaTeX について説明します\footnote{他にも\XeTeX や\pTeX-ngなどがあります．}．これらの\TeX エンジンには\LaTeX に対応したものとして\pLaTeX ，\upLaTeX ，\pdfLaTeX ，\LuaLaTeX が存在しています．
+\begin{description}
+	\item[\pLaTeX] \mbox{}\\
+		\pLaTeX は素の\LaTeX を日本語対応させたものであり，このノートで扱う\TeX エンジンの中では最も古いものです．現在ではこのエンジンよりも新しいものが色々と出てきており積極的に使用する理由はありませんが，日本の学会では未だに\pLaTeX を前提としている場合も多いです．
+	\item[\upLaTeX] \mbox{}\\
+		\upLaTeX は\pLaTeX の内部をUnicode化したものであり，\pLaTeX のほぼ上位互換です．\pLaTeX とまとめて(u)\pLaTeX と書きます．
+	\item[\pdfLaTeX] \mbox{}\\
+		\pdfLaTeX は素の\LaTeX を拡張したものであり，最大の特徴はdviファイルではなく直接PDFを出力することです．日本語の組版はできません．arXivではこの\pdfLaTeX を前提としているので，物理学者が論文を執筆するときは通常この\pdfLaTeX を使用します\footnote{\TeX エンジンについて知らないがために\pdfLaTeX 用の記述と\pLaTeX 用の記述が混在した文書をarXivにアップロードしようとしてうまくいかないと言っている物理学者をたまに見かけます．}\footnote{pdf\pLaTeX というツールがありますがこれは\pLaTeX でPDFを作成するものであり\pdfLaTeX とは無関係です．}．
+	\item[\LuaLaTeX] \mbox{}\\
+		\LuaLaTeX は\pdfLaTeX を拡張してスクリプト言語Luaを使用できるようにしたものです．\pdfLaTeX と同じく直接PDFを出力します．\LuaLaTeX では非常に簡単にフォントをカスタマイズすることができます．日本語の組版も可能です．新しいエンジンであり日本語専用のエンジンではないため，(u)\pLaTeX でよくあるパッケージ（便利なマクロをまとめたもの）が対応してないなどの問題が少ないです．タイプセットに時間がかかるのが欠点です．
+\end{description}
 
-\subsubsection*{\pLaTeX}
-\pLaTeX は素の\LaTeX を日本語対応させたものであり，このノートで扱う\TeX エンジンの中では最も古いものです．現在ではこのエンジンよりも新しいものが色々と出てきており積極的に使用する理由はありませんが，日本の学会では未だに\pLaTeX を前提としている場合も多いです．
-
-\subsubsection*{\upLaTeX}
-\upLaTeX は\pLaTeX の内部をUnicode化したものであり，\pLaTeX のほぼ上位互換です．\pLaTeX とまとめて(u)\pLaTeX と書きます．
-
-\subsubsection*{\pdfLaTeX}
-\pdfLaTeX は素の\LaTeX を拡張したものであり，最大の特徴はdviファイルではなく直接PDFを出力することです．日本語の組版はできません．arXivではこの\pdfLaTeX を前提としているので，物理学者が論文を執筆するときは通常この\pdfLaTeX を使用します\footnote{\TeX エンジンについて知らないがために\pdfLaTeX 用の記述と\pLaTeX 用の記述が混在した文書をarXivにアップロードしようとしてうまくいかないと言っている物理学者をたまに見かけます．}．
-
-\subsubsection*{\LuaLaTeX}
-\LuaLaTeX は\pdfLaTeX を拡張してスクリプト言語Luaを使用できるようにしたものです．\pdfLaTeX と同じく直接PDFを出力します．\LuaLaTeX では非常に簡単にフォントをカスタマイズすることができます．日本語の組版も可能です．新しいエンジンであり日本語専用のエンジンではないため，(u)\pLaTeX でよくあるパッケージ（便利なマクロをまとめたもの）が対応してないなどの問題が少ないです．
+こんなにも\TeX エンジンに色々種類があるとどの\TeX エンジンを使うべきなのか迷うと思います．大前提として\TeX エンジンが指定されている場合はそれを使いましょう．特に指定がない状況で日本語の文書を作成する場合は\upLaTeX または\LuaLaTeX を使うことを推奨します．\LuaLaTeX だけでなく\upLaTeX も挙げて理由は，日本語の文書では\pLaTeX を指定されることがまだまだあり，\pLaTeX と異なる点が多い\LuaLaTeX を使うのは大変なのに対して，\upLaTeX は\pLaTeX と同じ感覚で使えるので覚えることが少ないからです．
