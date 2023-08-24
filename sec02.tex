@@ -3,4 +3,10 @@
 \TeX に様々な関するツールを集めたものを\TeX ディストリビューションと言います．最も有名な\TeX ディストリビューションは\TeX\ Liveです\footnote{他にはMiK\TeX やかつて使われていた日本語用のW32\TeX などがあります．}．arXivも\TeX\ Liveを使用しています．
 
 \subsection{Webで\LaTeX を使う}
-\LaTeX はインストールしなくてもwebで使うことができます．日本で有名なのはCloud LaTeX\footnote{\url{https://cloudlatex.io/ja}}とOverleaf\footnote{\url{https://www.overleaf.com}}です．この2つはどちらも\TeX\ Liveを使用しています．Cloud LaTeXは日本企業が運営しており完全に日本語で使うことができます．Overleafは有料機能ではあるものの複数人で編集する機能があり便利です．ただしOverleafはそのままでは(u)\pLaTeX が使えません．
+\LaTeX はインストールしなくてもwebで使うことができます．日本で有名なのはCloud LaTeX\footnote{\url{https://cloudlatex.io}}とOverleaf\footnote{\url{https://www.overleaf.com}}です．この2つはどちらも\TeX\ Liveを使用しています．Cloud LaTeXは日本企業が運営しており完全に日本語で使うことができます．Overleafは世界で最も有名なweb上の\LaTeX システムです．Overleafは有料機能ではあるものの複数人で編集する機能があり便利です．ただしOverleafはそのままでは(u)\pLaTeX が使えません．
+
+\subsection{ローカルで\LaTeX を使う}
+ローカルでは\TeX ディストリビューションとテキストエディタを組み合わせて\LaTeX を使います．\TeX\ Liveは年次ごとにバージョンが新しくなります．\TeX\ Liveのバージョンが異なりうまくタイプセットできない場合もあるので，そういった場合に対処できるように最新版だけでなく過去バージョンのインストール方法も説明します．どれか1つのバージョンをインストールする場合はどのバージョンが良いのかという疑問もあるかもしれません．その場合は最新版をインストールするのもいいですが，物理学者の場合はarXivが使用している\TeX\ Liveに合わせるというのもありだと思います．ここからはOS別に説明していきます．
+
+\subsubsection*{Windows}
+Windowsでは\TeX ディストリビューションは素直に\TeX\ Liveをインストールするのがお勧めです\footnote{MSYS2，Cygwinへインストールすることもできます．WSLへインストールしたい場合はLinuxの項目を参照してください．}．\TeX\ Liveのインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe}から過去バージョンは\url{https://texlive.texjp.org/2023/tlnet/install-tl-windows.exe}（2023の部分を欲しい年に書き換えてください．）からダウンロードできます．
