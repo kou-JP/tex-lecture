@@ -1,18 +1,42 @@
 \section{\LaTeX を使う}
 \subsection{\TeX ディストリビューション}
-\TeX に様々な関するツールを集めたものを\TeX ディストリビューションと言います．最も有名な\TeX ディストリビューションは\TeX\ Liveです\footnote{他にはMiK\TeX やかつて使われていた日本語用のW32\TeX などがあります．}．arXivも\TeX\ Liveを使用しています．
+\TeX に関する様々なツールやパッケージを集めたものを\TeX ディストリビューションと言います．最も有名な\TeX ディストリビューションは\TeX\ Liveです\footnote{他にはMiK\TeX やかつて使われていた日本語用のW32\TeX などがあります．}．arXivも\TeX\ Liveを使用しています．
 
 \subsection{Webで\LaTeX を使う}
 \LaTeX はインストールしなくてもwebで使うことができます．日本で有名なのはCloud LaTeX\footnote{\url{https://cloudlatex.io}}とOverleaf\footnote{\url{https://www.overleaf.com}}です．この2つはどちらも\TeX\ Liveを使用しています．Cloud LaTeXは日本企業が運営しており完全に日本語で使うことができます．Overleafは世界で最も有名なweb上の\LaTeX システムです．Overleafは有料機能ではあるものの複数人で編集する機能があり便利です．ただしOverleafはそのままでは(u)\pLaTeX が使えません．
 
 \subsection{ローカルで\LaTeX を使う}
-ローカルでは\TeX ディストリビューションとテキストエディタとPDFビューアを組み合わせて\LaTeX を使います．\TeX\ Liveは年次ごとにバージョンが新しくなります．\TeX\ Liveのバージョンが異なりうまくタイプセットできない場合もあるので，そういった場合に対処できるように最新版だけでなく過去バージョンのインストール方法も説明します．どれか1つのバージョンをインストールする場合はどのバージョンが良いのかという疑問もあるかもしれません．その場合は最新版をインストールするのもいいですが，物理学者の場合はarXivが使用している\TeX\ Liveに合わせるというのもありだと思います．\footnote{arXivの\TeX\ Liveのバージョンは\url{https://info.arxiv.org/help/faq/texlive.html}から確認できます．}ここからはOS別に説明していきます．
+ローカルでは\TeX ディストリビューションとテキストエディタとPDFビューアを組み合わせて\LaTeX を使います．\TeX\ Liveは年次ごとにバージョンが新しくなります．\TeX\ Liveのバージョンが異なりうまくタイプセットできない場合もあるので，そういった場合に対処できるように最新版だけでなく過去バージョンのインストール方法も説明します．どれか1つのバージョンをインストールする場合はどのバージョンが良いのかという疑問もあるかもしれません．その場合は最新版をインストールするのもいいですが，物理学者の場合はarXivが使用している\TeX\ Liveに合わせるというのもありだと思います．\footnote{arXivの\TeX\ Liveのバージョンは\url{https://info.arxiv.org/help/faq/texlive.html}から確認できます．}ここからは\TeX\ Liveのインストール方法をOS別に説明していきます．
 
 \subsubsection*{Windows}
 Windowsでは\TeX ディストリビューションは素直に\TeX\ Liveをインストールするのがお勧めです\footnote{MSYS2，Cygwinへインストールすることもできますがこのテキストでは説明しません．WSLへインストールしたい場合はLinuxの項目を参照してください．}．\TeX\ Liveのインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip}から，過去バージョンは\url{https://texlive.texjp.org/2022/tlnet/install-tl.zip}（以下2022の部分を欲しい年に書き換えてください．）からダウンロードできます．ダウンロードしたzipファイルを解凍してください．最新版の場合は\texttt{install-tl-20230314}のような日付付きのフォルダーの中にある\texttt{install-tl-windows.bat}を実行してください．すべてのユーザーにインストールしたい場合は右クリックして管理者権限で実行してください．「WindowsによってPCが保護されました」という警告が表示される場合は詳細情報，実行の順でクリックすることで実行できます．過去バージョンの場合は日付付きのフォルダーをターミナルで開いて，
 \begin{lstlisting}[language=bash]
-	.\install-tl-windows.bat -repository https://texlive.texjp.org/2022/tlnet/
+.\install-tl-windows.bat -repository https://texlive.texjp.org/2022/tlnet/
 \end{lstlisting}
 というコマンドを実行してください．ターミナルは元々WindowsにインストールされているコマンドプロンプトやWindows PowerShellでも構いませんが，現在はMicrosoft StoreからインストールできるPowerShellとWindows Terminalを使用するのがお勧めです．ISOイメージは最新版は\url{https://mirror.ctan.org/systems/texlive/Images/texlive.iso}から，過去バージョンは\url{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/texlive.iso}\footnote{残念ながらISOイメージを配布している国内サーバーはなさそうなのでここでは比較的近そうな北京のサーバーのアドレスになっています．他のサーバーからダウンロードする場合は\url{https://www.tug.org/historic/}のMirrorsにあるアドレスで\texttt{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/}の部分を置き換えてください．}からダウンロードできます．ISOイメージをダブルクリックしてマウントすると\texttt{install-tl-windows.bat}があるのでその後はネットワークインストーラと同様にインストールします．
 
-TeX Live 2022インストーラが開かれたら高度な設定でインストール内容をカスタマイズできます．全部インストールすると時間も容量も必要なので，それらを節約したい場合はここで必要そうなもののみをインストールして，後から足りないと言われたものを追加でダウンロードしましょう\footnote{\TeX マクロの性質上\TeX\ Liveではパッケージの依存関係の完全な解消が難しく，あとから追加するのが少し面倒なため，僕はフルでインストールしています．}．カスタマイズする場合は，スキームをbasicスキームに変更し，カスタマイズをクリックして追加コレクションを選択しましょう．日本語，LaTeX推奨パッケージ，TeX外部プログラム，推奨フォント，数学、自然科学、計算機科学パッケージは追加することをお勧めします．\footnote{この追加コレクションだけでこのテキストに出てくるすべてのパッケージを網羅できるわけではありません．}オプションのデフォルト用紙サイズがA4になっていることを確認してください．TeXworks以外のテキストエディタを使用する場合はTeXworksをインストールのチェックは外しておきましょう．
+TeX Liveインストーラが開かれたら高度な設定でインストール内容をカスタマイズできます．全部インストールすると時間も容量も必要なので，それらを節約したい場合はここで必要そうなもののみをインストールして，後から足りないと言われたものを追加でダウンロードしましょう\footnote{\TeX マクロの性質上\TeX\ Liveではパッケージの依存関係の完全な解消が難しく，あとから追加するのが少し面倒なため，僕はフルでインストールしています．}．カスタマイズする場合は，スキームをbasicスキームに変更し，カスタマイズをクリックして追加コレクションを選択しましょう．日本語，LaTeX推奨パッケージ，TeX外部プログラム，推奨フォント，数学、自然科学、計算機科学パッケージは追加することをお勧めします．\footnote{この追加コレクションだけでこのテキストに出てくるすべてのパッケージを網羅できるわけではありません．}オプションのデフォルト用紙サイズがA4になっていることを確認してください．TeXworks以外のテキストエディタを使用する場合はTeXworksをインストールのチェックは外しておきましょう．
+
+\subsubsection*{Linux}
+Linuxでの\TeX\ Liveのインストール方法は大きく分けて2つあります．1つ目は各Linuxディストリビューションのパッケージ管理システムから\TeX\ Liveをインストールするという方法で，2つ目は\TeX\ Liveのインストーラを使用する方法です．1つ目の方法の方が手軽ですが\TeX\ Liveには独自のパッケージ管理システムが存在しているので，2つ目の方法をお勧めします\footnote{1つ目の方法では複数バージョンの\TeX\ Liveをインストールすることが難しいという点でも2つ目の方法をお勧めします．}	．
+
+\TeX\ Liveのインストーラを用いたインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}から，過去バージョンは\url{https://texlive.texjp.org/2022/tlnet/install-tl-unx.tar.gz}（以下2022の部分を欲しい年に書き換えてください．）からダウンロードできます．
+\begin{lstlisting}[language=bash]
+#最新版
+wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+#過去バージョン
+wget https://texlive.texjp.org/2022/tlnet/install-tl-unx.tar.gz
+\end{lstlisting}
+ダウンロードした圧縮ファイルを解凍してください．
+\begin{lstlisting}[language=bash]
+tar xvfz install-tl-unx.tar.gz
+\end{lstlisting}
+最新版の場合は\texttt{install-tl-20230314}のような日付付きのフォルダーの中にある\texttt{install-tl}をroot権限で実行してください．過去バージョンの場合はインストーラを実行するときに\texttt{-repository https://texlive.texjp.org/2022/tlnet/}というオプションを付けてください．\texttt{-no-gui}オプションを付けることでCUIでインストールできます．
+\begin{lstlisting}[language=bash]
+#最新版
+cd install-tl-2*
+sudo .\install-tl
+#過去バージョン
+cd install-tl-2*
+sudo .\install-tl -repository https://texlive.texjp.org/2022/tlnet/
+\end{lstlisting}
