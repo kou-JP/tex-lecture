@@ -1,21 +1,21 @@
 \section{\TeX，\LaTeX とは？}
 \subsection{\TeX とは？}
-\TeX はD. E. Knuthによって開発された組版システムです．組版は文字や図を紙面に配置することを意味する印刷用語です．\TeX はWordやInDesignのようなWYSIWYG\footnote{What you see is what you getの略で完成形と編集画面の表示が等しいものを意味します．}なソフトとは異なり，テキスト形式で入力します．\texttt{main.tex}のような\TeX の文書ファイルをこのノートではtexファイルと呼びます．\TeX ではtexファイルを変換してdviファイル\footnote{\underline{d}e\underline{v}ice \underline{i}ndependent（装置に依存しない）の略です．}にします．現在はdviファイルをdviドライバ（dviウェアとも呼ばれます）を用いてPDFに変換することがほとんどです\footnote{dviファイルを直接閲覧するdviドライバ（dviビューアとも呼ばれます）や，PostScriptに変換するdviドライバなど様々なdviドライバが存在します．}．この変換のことをタイプセットまたはコンパイルと呼びます\footnote{タイプセットは組版するという意味の英語で，コンパイルは元はプログラミングにおいて同じような変換を指す言葉ですが，現在では\TeX でも使われるようになりました．}．\TeX において使用する独自のプログラミング言語を\TeX 言語と呼びます．
+\TeX はD. E. Knuthによって開発された組版システムです．組版は文字や図を紙面に配置することを意味する印刷用語です．\TeX はWordやInDesignのようなWYSIWYG\footnote{What you see is what you getの略で完成形と編集画面の表示が等しいものを意味します．}なソフトとは異なり，テキスト形式で入力します．\texttt{main.tex}のような\TeX の文書ファイルをこのテキストではtexファイルと呼びます．\TeX ではtexファイルを変換してdviファイル\footnote{\underline{d}e\underline{v}ice \underline{i}ndependent（装置に依存しない）の略です．}にします．現在はdviファイルをdviドライバ（dviウェアとも呼ばれます）を用いてPDFに変換することがほとんどです\footnote{dviファイルを直接閲覧するdviドライバ（dviビューアとも呼ばれます）や，PostScriptに変換するdviドライバなど様々なdviドライバが存在します．}．この変換のことをタイプセットまたはコンパイルと呼びます\footnote{タイプセットは組版するという意味の英語で，コンパイルは元はプログラミングにおいて同じような変換を指す言葉ですが，現在では\TeX でも使われるようになりました．}．\TeX において使用する独自のプログラミング言語を\TeX 言語と呼びます．\TeX 言語で作成されたプログラムを\TeX マクロと呼びます．
 
 \TeX はEを少し下げて字間を詰めて書き，それが難しい場合はTeXのようにeを小文字にしてTとXを大文字にして書きます．\TeX は技術や芸術を意味するギリシャ語の\ruby{τέχνη}{テクネー}に由来するので最後のXを/x/と発音します．/x/の音が存在しない言語においては近い音で代用されます．例えば，英語では/k/で代用することが多いようです．日本語では/ɸ/で代用して「テフ」と読むか，英語と同様に/k/で代用して「テック」と読むことが多いです．
 
 \subsection{\LaTeX とは？}
-\LaTeX はL. Lamportによって開発されたマクロパッケージです．マクロパッケージとは\TeX 言語を用いて組版するのに便利な機能を実装したもので\LaTeX の他にはplain \TeX や\ConTeXt などがあります．素の\TeX のみで組版するのは非常に大変なので通常これらのマクロパッケージを用います．このノートでは\LaTeX のみを対象として解説するので，\LaTeX は\TeX に様々な機能を追加したもので他にも色々な種類があるとだけ理解していれば十分です．
+\LaTeX はL. Lamportによって開発されたマクロパッケージです．マクロパッケージとは\TeX 言語を用いて組版するのに便利な機能を実装したもので\LaTeX の他にはplain \TeX や\ConTeXt などがあります．素の\TeX のみで組版するのは非常に大変なので通常これらのマクロパッケージを用います．このテキストでは\LaTeX のみを対象として解説するので，\LaTeX は\TeX に様々な機能を追加したもので他にも色々な種類があるとだけ理解していれば十分です．
 
 \LaTeX も\TeX と同様に\LaTeX と書きますが，それが難しい場合はLaTeXと書きます．読み方に関して\TeX とは異なり好きに読んで構わないらしいです．日本語では「ラテフ」や「ラテック」と読む場合が多いです．英語では「レイテック」と読む人が多いらしいです．
 
-このノートの題名のように\LaTeXe というものも見かけるかもしれません．これは\LaTeX のバージョンを指しています．\LaTeXe の前後でtexファイルの構造が大きく異なるので区別してこのように表します\footnote{\LaTeXe よりも前の\LaTeX を\LaTeX 2.09と呼びます．\LaTeX 2.09では\,\texttt{\backslash documentclass}の代わりに\,\texttt{\backslash documentstyle}を使います．たまにネットで\,\texttt{\backslash documentstyle}から始まるtexファイルを見かけますが，それは古のtexファイルなので参考になりません．ちなみに\LaTeXe の誕生は1994年です．\,\texttt{\backslash documentclass}については@節で説明します．}．\LaTeXe と書くことが難しい場合はLaTeX2εやLaTeX2eと書きます．
+このテキストの題名のように\LaTeXe というものも見かけるかもしれません．これは\LaTeX のバージョンを指しています．\LaTeXe の前後でtexファイルの構造が大きく異なるので区別してこのように表します\footnote{\LaTeXe よりも前の\LaTeX を\LaTeX 2.09と呼びます．\LaTeX 2.09では\,\texttt{\backslash documentclass}の代わりに\,\texttt{\backslash documentstyle}を使います．たまにネットで\,\texttt{\backslash documentstyle}から始まるtexファイルを見かけますが，それは古のtexファイルなので参考になりません．ちなみに\LaTeXe の誕生は1994年です．\,\texttt{\backslash documentclass}については@節で説明します．}．\LaTeXe と書くことが難しい場合はLaTeX2εやLaTeX2eと書きます．
 
 \subsection{\TeX エンジン}
-texファイルをdviファイルにタイプセットする\TeX の本体を\TeX エンジンと呼びます．元々の\TeX を拡張した様々な\TeX エンジンが存在しており，このノートでは\pTeX ，\upTeX ，\pdfTeX ，\LuaTeX について説明します\footnote{他にも\XeTeX や\pTeX-ngなどがあります．}．これらの\TeX エンジンには\LaTeX に対応したものとして\pLaTeX ，\upLaTeX ，\pdfLaTeX ，\LuaLaTeX が存在しています．
+texファイルをdviファイルにタイプセットする\TeX の本体を\TeX エンジンと呼びます．元々の\TeX を拡張した様々な\TeX エンジンが存在しており，このテキストでは\pTeX ，\upTeX ，\pdfTeX ，\LuaTeX について説明します\footnote{他にも\XeTeX や\pTeX-ngなどがあります．}．これらの\TeX エンジンには\LaTeX に対応したものとして\pLaTeX ，\upLaTeX ，\pdfLaTeX ，\LuaLaTeX が存在しています．
 \begin{description}
 	\item[\pLaTeX] \mbox{}\\
-		\pLaTeX は素の\LaTeX を日本語対応させたものであり，このノートで扱う\TeX エンジンの中では最も古いものです．現在ではこのエンジンよりも新しいものが色々と出てきており積極的に使用する理由はありませんが，日本の学会では未だに\pLaTeX を前提としている場合も多いです．
+		\pLaTeX は素の\LaTeX を日本語対応させたものであり，このテキストで扱う\TeX エンジンの中では最も古いものです．現在ではこのエンジンよりも新しいものが色々と出てきており積極的に使用する理由はありませんが，日本の学会では未だに\pLaTeX を前提としている場合も多いです．
 	\item[\upLaTeX] \mbox{}\\
 		\upLaTeX は\pLaTeX の内部をUnicode化したものであり，\pLaTeX のほぼ上位互換です．\pLaTeX とまとめて(u)\pLaTeX と書きます．
 	\item[\pdfLaTeX] \mbox{}\\

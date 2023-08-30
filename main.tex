@@ -1,12 +1,22 @@
-\documentclass[lualatex,12pt,titlepage]{jlreq}
+\documentclass[luatex,12pt,titlepage]{jlreq}
 \usepackage{amsmath}
 \usepackage{newcomputermodern}%unicode-math完全対応のCM系フォント
 \usepackage{unicode-math}
+\usepackage{listings}%ソースコード用
 \usepackage{luatexja-ruby}%ルビ
+\usepackage{xcolor}
 \usepackage[unicode]{hyperref}%リンク
 \usepackage{bxtexlogo}%logo
 \bxtexlogoimport{*}%logoの読み込み
 \ltjsetparameter{jacharrange={-2}}%ギリシャ語を欧文扱いに
+\lstset{backgroundcolor={\color[gray]{.90}},
+		breaklines = true,
+		basicstyle = \ttfamily\small,
+		breakindent = 10pt,
+		frame = TBrl,
+		framesep = 5pt,
+		numbers = left,
+		stepnumber = 1,}
 \title{\LaTeXe 入門講義}
 \author{三宅浩太朗}
 
