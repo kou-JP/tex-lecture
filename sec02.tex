@@ -8,6 +8,7 @@
 \subsection{ローカルで\LaTeX を使う}
 ローカルでは\TeX ディストリビューションとテキストエディタとPDFビューアを組み合わせて\LaTeX を使います．\TeX\ Liveは年次ごとにバージョンが新しくなります．\TeX\ Liveのバージョンが異なりうまくタイプセットできない場合もあるので，そういった場合に対処できるように最新版だけでなく過去バージョンのインストール方法も説明します．どれか1つのバージョンをインストールする場合はどのバージョンが良いのかという疑問もあるかもしれません．その場合は最新版をインストールするのもいいですが，物理学者の場合はarXivが使用している\TeX\ Liveに合わせるというのもありだと思います．\footnote{arXivの\TeX\ Liveのバージョンは\url{https://info.arxiv.org/help/faq/texlive.html}から確認できます．}ここからは\TeX\ Liveのインストール方法をOS別に説明していきます．
 
+\subsection{\TeX\ Liveのインストール}
 \subsubsection*{Windows}
 Windowsでは\TeX ディストリビューションは素直に\TeX\ Liveをインストールするのがお勧めです\footnote{MSYS2，Cygwinへインストールすることもできますがこのテキストでは説明しません．WSLへインストールしたい場合はLinuxの項目を参照してください．}．\TeX\ Liveのインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip}から，過去バージョンは\url{https://texlive.texjp.org/2022/tlnet/install-tl.zip}（以下2022の部分を欲しい年に書き換えてください．）からダウンロードできます．ダウンロードしたzipファイルを解凍してください．最新版の場合は\texttt{install-tl-20230314}のような日付付きのフォルダーの中にある\texttt{install-tl-windows.bat}を実行してください．すべてのユーザーにインストールしたい場合は右クリックして管理者権限で実行してください．「WindowsによってPCが保護されました」という警告が表示される場合は詳細情報，実行の順でクリックすることで実行できます．過去バージョンの場合は日付付きのフォルダーをターミナルで開いて，
 \begin{lstlisting}[language=bash]
@@ -24,7 +25,7 @@ tlmgr update --self --all
 を実行してください．ただしこのコマンドは年をまたいでのアップデート（例えば\TeX\ Live 2022から\TeX\ Live 2023へ）はできないので，その場合は新しい年の\TeX\ Liveを追加でインストールして過去バージョンの\TeX\ Liveをアンインストールしてください\footnote{過去バージョンのアンインストールは任意です．}．
 
 \subsubsection*{Linux}
-Linuxでの\TeX\ Liveのインストール方法は大きく分けて2つあります．1つ目は各Linuxディストリビューションのパッケージ管理システムから\TeX\ Liveをインストールするという方法で，2つ目は\TeX\ Liveのインストーラを使用する方法です．1つ目の方法の方が手軽ですが\TeX\ Liveには独自のパッケージ管理システムが存在しているので，2つ目の方法をお勧めします\footnote{1つ目の方法では複数バージョンの\TeX\ Liveをインストールすることが難しいという点でも2つ目の方法をお勧めします．}	．
+Linuxでの\TeX\ Liveのインストール方法は大きく分けて2つあります．1つ目は各Linuxディストリビューションのパッケージ管理システムから\TeX\ Liveをインストールするという方法で，2つ目は\TeX\ Liveのインストーラを使用する方法です．1つ目の方法の方が手軽ですが\TeX\ Liveには独自のパッケージ管理システムが存在しているので，2つ目の方法をお勧めします\footnote{1つ目の方法では複数バージョンの\TeX\ Liveをインストールすることが難しいという点でも2つ目の方法をお勧めします．}	．以下のLinuxのコマンドはUbuntuを想定しているので，Ubuntu以外を使用している場合は各自読み替えてください．
 
 \TeX\ Liveのインストーラを用いたインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}から，過去バージョンは\url{https://texlive.texjp.org/2022/tlnet/install-tl-unx.tar.gz}（以下2022の部分を欲しい年に書き換えてください．）からダウンロードできます．
 \begin{lstlisting}[language=bash]
@@ -46,15 +47,133 @@ sudo ./install-tl
 cd install-tl-2*
 sudo ./install-tl -repository https://texlive.texjp.org/2022/tlnet/
 \end{lstlisting}
+ISOイメージは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}から，過去バージョンは\url{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/texlive.iso}\footnote{残念ながらISOイメージを配布している国内サーバーはなさそうなのでここでは比較的近そうな北京のサーバーのアドレスになっています．他のサーバーからダウンロードする場合は\url{https://www.tug.org/historic/}のMirrorsにあるアドレスで\texttt{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/}の部分を置き換えてください．}からダウンロードできます．
+\begin{lstlisting}[language=bash]
+#最新版
+wget https://mirror.ctan.org/systems/texlive/Images/texlive.iso
+#過去バージョン
+wget https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/texlive.iso
+\end{lstlisting}
+ダウンロードが終わったらマウントします．
+\begin{lstlisting}[language=bash]
+mkdir install-tl
+sudo mount -o loop texlive.iso install-tl
+\end{lstlisting}
+マウントした後はインストーラの場合と同様に実行します．
+\begin{lstlisting}[language=bash]
+#最新版
+cd install-tl
+sudo ./install-tl
+#過去バージョン
+cd install-tl
+sudo ./install-tl -repository https://texlive.texjp.org/2022/tlnet/
+\end{lstlisting}
 
 TeX Liveインストーラが開かれたら高度な設定でインストール内容をカスタマイズできます．全部インストールすると時間も容量も必要なので，それらを節約したい場合はここで必要そうなもののみをインストールして，後から足りないと言われたものを追加でダウンロードしましょう\footnote{\TeX マクロの性質上\TeX\ Liveではパッケージの依存関係の完全な解消が難しく，あとから追加するのが少し面倒なため，僕はフルでインストールしています．}．カスタマイズする場合は，スキームをbasicスキームに変更し，カスタマイズをクリックして追加コレクションを選択しましょう．日本語，LaTeX推奨パッケージ，TeX外部プログラム，推奨フォント，数学、自然科学、計算機科学パッケージは追加することをお勧めします．\footnote{この追加コレクションだけでこのテキストに出てくるすべてのパッケージを網羅できるわけではありません．}オプションのデフォルト用紙サイズがA4になっていることを確認してください．TeXworks以外のテキストエディタを使用する場合はTeXworksをインストールのチェックは外しておきましょう．CUIの場合はSでスキームの変更，Cでコレクションの選択，Iでインストールの実行になります．インストールが終了したら次のコマンドを実行してPathを通します．
 \begin{lstlisting}[language=bash]
 sudo /usr/local/texlive/????/bin/*/tlmgr path add
 \end{lstlisting}
-うまくいかない場合は????を2022，\textasteriskcentered をx86\_64-linuxなどに置き換えて実行してください．
+うまくいかない場合は\texttt{????}を\texttt{2022}，\texttt{*}を\texttt{x86\_64-linux}などに置き換えて実行してください．
+
+GhostscriptはPostScriptからPDFへの変換によく使われるツールですが，それ以外でも\TeX ではよく使われるのでインストールをお勧めします．\TeX\ LiveにはGhostscriptが含まれていないので別途インストールする必要があります．
+\begin{lstlisting}[language=bash]
+sudo apt update && sudo apt install ghostscript -y
+\end{lstlisting}
 
 アップデートする場合はターミナルで
 \begin{lstlisting}[language=bash]
 sudo tlmgr update --self --all
 \end{lstlisting}
 を実行してください．ただしこのコマンドは年をまたいでのアップデート（例えば\TeX\ Live 2022から\TeX\ Live 2023へ）はできないので，その場合は新しい年の\TeX\ Liveを追加でインストールして過去バージョンの\TeX\ Liveをアンインストールしてください\footnote{過去バージョンのアンインストールは任意です．}．
+
+\subsubsection*{macOS}
+macOSでの\TeX\ Liveのインストール方法は大きく分けて2つあります．1つ目はMac\TeX またはBasic\TeX をインストールするという方法で，2つ目は\TeX\ Liveのインストーラを使用する方法です．Mac\TeX は\TeX\ LiveのフルインストールとGhostscriptおよび関連GUIツールのインストールをします．Basic\TeX はMac\TeX の\TeX\ Liveをフルインストールではなくscheme-smallに変更したものです\footnote{必要なものだけインストールするので容量が少なくてすみますが，\TeX\ Liveではパッケージの依存関係の完全な解消が難しく後から追加でダウンロードするのは大変です．}．
+
+Mac\TeX およびBasic\TeX のインストール方法には2種類あります．1つ目はMacTeX.pkgを使用する方法で，2つ目はHomebrew（brew）を使用する方法です．1つ目の方法でもGhostscriptはMac\TeX でインストールしてしまうとアンインストールが難しかったり他の方法でインストールしたものと干渉したりするため，brewでのインストールを強く推奨します．
+
+MacTeX.pkgでインストールする場合でもGhostscriptはbrewでインストールするのでまずbrewをインストールします．brewにはCommand Line Tools（CLT）が必要なためまずCLTをインストールします．CLTにはXcodeに付属するものと単体でインストールするものの2種類あります．brewは単体のものだけでも問題なく動きますが，brewでインストールするソフトによってはXcodeまたは両方が必要になる場合があるようです．XcodeはApp Storeからインストールできます．CLTを単体でインストールする場合はターミナルで
+\begin{lstlisting}[language=bash]
+xcode-select --install
+\end{lstlisting}
+を実行してください．CLTをインストールした後は次のコマンドをターミナルで実行することでbrewをインストールできます．
+\begin{lstlisting}[language=bash]
+/bin/bash -c "$(curl\ -fsSL\ https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+\end{lstlisting}
+brewがインストール出来たらbrewでGhostscriptをインストールします．
+\begin{lstlisting}[language=bash]
+brew install ghostscript
+\end{lstlisting}
+Ghostscriptをインストールしたら次にMac\TeX をインストールします．Mac\TeX の場合は\url{https://mirror.ctan.org/systems/mac/mactex/MacTeX.pkg}，Basic\TeX の場合は\url{https://mirror.ctan.org/systems/mac/mactex/BasicTeX.pkg}からダウンロードします．ダウンロードしたMacTeX.pkgまたはBasicTeX.pkgをダブルクリックしてインストールします．インストールするときにインストールの種類の画面でカスタマイズを押してGhostscriptをインストールしないように変更することを忘れないでください．インストールが終了したら次のコマンドをターミナルで実行してデフォルトの用紙サイズをA4に変更してください．
+\begin{lstlisting}[language=bash]
+sudo tlmgr paper a4
+\end{lstlisting}
+
+Homebrewを使用してインストールする場合もまずbrewをインストールします．brewのインストールは上のMacTeX.pkgでインストールする方法の最初の部分に従ってください．brewでMac\TeX をインストールして，デフォルトの用紙サイズをA4に変更してください．Ghostscriptは自動的にインストールされます．
+\begin{lstlisting}[language=bash]
+brew install --cask mactex
+sudo tlmgr paper a4
+\end{lstlisting}
+GUI-Applicationsなしでもインストールできその場合は次のコマンドを実行してください．
+\begin{lstlisting}[language=bash]
+brew install --cask mactex-no-gui
+sudo tlmgr paper a4
+\end{lstlisting}
+Basic\TeX の場合はインストール後に追加でコレクションやパッケージをインストールする必要があります．
+\begin{lstlisting}[language=bash]
+brew install --cask basictex
+sudo tlmgr paper a4
+sudo tlmgr install collection-langjapanese
+\end{lstlisting}
+collection-langjapaneseだけだと足りないと思うので，自分に必要なパッケージを調べて随時インストールしてください．Basic\TeX の場合はGUI-Applicationsなしは無いようです．
+
+\TeX\ Liveのインストーラを用いたインストールはネットワークインストーラを用いる方法とISOイメージを用いる方法があります．ネットワークインストーラは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}から，過去バージョンは\url{https://texlive.texjp.org/2022/tlnet/install-tl-unx.tar.gz}（以下2022の部分を欲しい年に書き換えてください．）からダウンロードできます．
+\begin{lstlisting}[language=bash]
+#最新版
+curl -OL https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+#過去バージョン
+curl -OL https://texlive.texjp.org/2022/tlnet/install-tl-unx.tar.gz
+\end{lstlisting}
+ダウンロードした圧縮ファイルを解凍してください．
+\begin{lstlisting}[language=bash]
+tar xvfz install-tl-unx.tar.gz
+\end{lstlisting}
+最新版の場合は\texttt{install-tl-20230314}のような日付付きのフォルダーの中にある\texttt{install-tl}をroot権限で実行してください．過去バージョンの場合はインストーラを実行するときに\texttt{-repository https://texlive.texjp.org/2022/tlnet/}というオプションを付けてください．\texttt{-no-gui}オプションを付けることでCUIでインストールできます．
+\begin{lstlisting}[language=bash]
+#最新版
+cd install-tl-2*
+sudo ./install-tl
+#過去バージョン
+cd install-tl-2*
+sudo ./install-tl -repository https://texlive.texjp.org/2022/tlnet/
+\end{lstlisting}
+ISOイメージは最新版は\url{https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz}から，過去バージョンは\url{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/systems/texlive/2022/texlive.iso}\footnote{残念ながらISOイメージを配布している国内サーバーはなさそうなのでここでは比較的近そうな北京のサーバーのアドレスになっています．他のサーバーからダウンロードする場合は\url{https://www.tug.org/historic/}のMirrorsにあるアドレスで\texttt{https://mirrors.tuna.tsinghua.edu.cn/tex-historic-archive/}の部分を置き換えてください．}からダウンロードできます．ダウンロードが終わったらISOイメージをダブルクリックしてマウントします．マウントした後はマウントしたディレクトリをターミナルで開いてインストーラの場合と同様に実行します．
+\begin{lstlisting}[language=bash]
+#最新版
+sudo ./install-tl
+#過去バージョン
+sudo ./install-tl -repository https://texlive.texjp.org/2022/tlnet/
+\end{lstlisting}
+
+TeX Liveインストーラが開かれたら高度な設定でインストール内容をカスタマイズできます．全部インストールすると時間も容量も必要なので，それらを節約したい場合はここで必要そうなもののみをインストールして，後から足りないと言われたものを追加でダウンロードしましょう\footnote{\TeX マクロの性質上\TeX\ Liveではパッケージの依存関係の完全な解消が難しく，あとから追加するのが少し面倒なため，僕はフルでインストールしています．}．カスタマイズする場合は，スキームをbasicスキームに変更し，カスタマイズをクリックして追加コレクションを選択しましょう．日本語，LaTeX推奨パッケージ，TeX外部プログラム，推奨フォント，数学、自然科学、計算機科学パッケージは追加することをお勧めします．\footnote{この追加コレクションだけでこのテキストに出てくるすべてのパッケージを網羅できるわけではありません．}オプションのデフォルト用紙サイズがA4になっていることを確認してください．TeXworks以外のテキストエディタを使用する場合はTeXworksをインストールのチェックは外しておきましょう．CUIの場合はSでスキームの変更，Cでコレクションの選択，Iでインストールの実行になります．インストールが終了したら次のコマンドを実行してPathを通します．
+\begin{lstlisting}[language=bash]
+sudo /usr/local/texlive/????/bin/*/tlmgr path add
+\end{lstlisting}
+うまくいかない場合は\texttt{????}を\texttt{2022}，\texttt{*}を\texttt{universal-darwin}などに置き換えて実行してください．
+
+GhostscriptはPostScriptからPDFへの変換によく使われるツールですが，それ以外でも\TeX ではよく使われるのでインストールをお勧めします．\TeX\ LiveにはGhostscriptが含まれていないので別途インストールする必要があります．
+\begin{lstlisting}[language=bash]
+brew install ghostscript
+\end{lstlisting}
+
+アップデートする場合はターミナルで
+\begin{lstlisting}[language=bash]
+sudo tlmgr update --self --all
+\end{lstlisting}
+を実行してください．ただしこのコマンドは年をまたいでのアップデート（例えば\TeX\ Live 2022から\TeX\ Live 2023へ）はできないので，その場合は新しい年の\TeX\ Liveを追加でインストールして過去バージョンの\TeX\ Liveをアンインストールしてください\footnote{過去バージョンのアンインストールは任意です．}．
+
+\subsection{テキストエディタとPDFビューア}
+texファイルはテキストファイルなのでテキストエディタを使用して書きます．\TeX 専用のテキストエディタを使用する場合と汎用エディタに\TeX 用のプラグインを追加して使用する場合の2種類があります．\TeX 専用のテキストエディタとしてはWindows，Linux，macOSで使用できる\TeX studioや\TeX works，LyX，macOSで使用できるTeX Shopが有名です．汎用エディタにプラグインを追加するものとしてはGNU Emacs用のYaTeX，Vim用のVimTeX，Visual Studio Code（VSCode）用のLaTeX Workshopが有名です．特にVSCodeは現在テキストエディタとして圧倒的に人気なので\LaTeX でもVSCodeを使用する人が多いようです．
+
+LaTeX Workshopではlatexmkというタイプセットの自動化ツール\footnote{latexmkの作者の専門はQCDらしいです．他の自動化ツールとしてはllmk，araraなどがあります．}を使うことを前提として開発されているようです．これはlatexmkのみがエラーメッセージが最適化されているということで，他のツールを使っても余計なエラーメッセージが表示されてしまう以外は問題なく使用できます．LaTeX Workshopのタイプセットの設定ではrecipesとtoolsを編集する方法がLaTeX wikiの\url{https://texwiki.texjp.org/?Visual%20Studio%20Code%2FLaTeX}で解説されていますが，僕はtexファイルごとにlatexmkrcファイルを用意するという方法を使っています\footnote{タイプセットするときにレシピを選ばずにすむことと，他の人がタイプセットをするときにも\texttt{latexmk}コマンドを実行するだけで良いという理由でそうしています．}．
+
+\LaTeX で使用されるテキストエディタの多くはPDFビューアも内蔵していますが，外部ビューアを使用したいという場合もあると思います．PDFビューアとしては一般にはAdobe Acrobat Readerが有名ですが重いのとWindowsではファイルをロックしてしまうので最終確認のみに使用するのがおすすめです\footnote{Adobe Acrobat ReaderにはMcAfeeのソフトも一緒にインストールさせようとしてくる罠があるので注意です．}．執筆中に使用するビューアとしてはWindowsではSumatraPDF（\url{https://www.sumatrapdfreader.org/download-free-pdf-viewer}），LinuxではGTKはEvince，QtはOkular，macOSではSkim（\url{https://skim-app.sourceforge.io/}）が有名です．
