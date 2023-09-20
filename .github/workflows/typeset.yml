@@ -10,6 +10,8 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: main.tex
+          texlive_version: 2023
+          args: -lualatex -gg
       - name: Upload PDF file
         uses: jakejarvis/s3-sync-action@master
         with:
