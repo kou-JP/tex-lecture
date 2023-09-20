@@ -11,7 +11,7 @@ jobs:
         with:
           root_file: main.tex
           texlive_version: 2023
-          args: -gg -o tex-lecture.pdf
+          args: -gg
 
       - name: Upload PDF file
         uses: jakejarvis/s3-sync-action@master
