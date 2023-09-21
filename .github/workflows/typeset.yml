@@ -12,7 +12,10 @@ jobs:
           root_file: tex-lecture.tex
           texlive_version: 2023
           args: -gg
-
+      - name: Cp
+        uses: |
+          mkdir ./public
+          cp ./tex-lecture ./public
       - name: Upload PDF file
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -22,3 +25,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
           AWS_S3_ENDPOINT: ${{ secrets.S3_ENDPOINT }}
+          SOURCE_DIR: public
