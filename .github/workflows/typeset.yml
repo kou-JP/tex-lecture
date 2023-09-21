@@ -13,7 +13,7 @@ jobs:
           texlive_version: 2023
           args: -gg
       - name: Cp
-        uses: |
+        run: |
           mkdir ./public
           cp ./tex-lecture ./public
       - name: Upload PDF file
