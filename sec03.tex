@@ -1,4 +1,33 @@
 \section{\LaTeX の基本}
 このセクションから\LaTeX の書き方を解説していきます．以下では可変部分を<\textit{string}>のように<>で斜体を挟んで表します．半角スペースは\verb*| |，全角スペースは⬚で表します．
 \subsection{コマンドと環境}
-\LaTeX のコマンドは\verb|\|<\textit{command}>のようなバックススラッシュに文字列がくっついた形をしています．コマンドにはコントロール・ワードとコントロール・シンボルの2種類があります．コントロール・ワードはバックススラッシュの後に文字列が続くもので，コントロール・シンボルはバックススラッシュの後に記号が1文字だけのものです．コントロール・ワードやコントロール・シンボルという名前を覚える必要はありません．バックススラッシュと記号1文字からなるコマンドは他のコマンドと仕様が少し異なるということを覚えれば十分です．コントロール・ワードは\verb*| |や\verb*|{}|のような記号の前までの文字列をコマンドとして認識します．コントロール・ワードの後の半角スペーススペースは無視されます．コントロール・ワードの後に半角スペーススペースを入力する場合は\verb*|\ |または\verb*|~|を用います\footnote{@で解説しますが前者は改行可能で後者は改行禁止という違いがあります．}．つまり\verb*|\TeXnician|はエラーになり，\verb*|\TeX nician|や\verb*|\TeX{}nician|は\TeX nicianと出力され，\verb*|\TeX\ nician|は\TeX\ nicianと出力されます．
+\LaTeX のコマンドは\verb|\|<\textit{command}>のようなバックススラッシュに文字列がくっついた形をしています．コマンドにはコントロール・ワードとコントロール・シンボルの2種類があります．コントロール・ワードはバックススラッシュの後に文字列が続くもので，コントロール・シンボルはバックススラッシュの後に記号が1文字だけのものです．コントロール・ワードやコントロール・シンボルという名前を覚える必要はありません．バックススラッシュと記号1文字からなるコマンドは他のコマンドと仕様が少し異なるということを覚えれば十分です．
+
+コントロール・ワードは\verb*| |や\verb*|{}|のような記号の前までの文字列をコマンドとして認識します．コントロール・ワードの後の半角スペーススペースは無視されます．コントロール・ワードの後に半角スペーススペースを入力する場合は\verb*|\ |を用います．つまり\verb*|\TeXnician|はエラーになり\footnote{もちろん\texttt{\textbackslash TeXnician}というコマンドを定義している場合はエラーになりません．}，\verb*|\TeX nician|や\verb*|\TeX{}nician|は\TeX nicianと出力され，\verb*|\TeX\ nician|は\TeX\ nicianと出力されます．
+
+コントロール・シンボルは\verb*|\|の後の1文字のみをコマンドとして認識します．そのため\verb*| |や\verb*|{}|で区切る必要なく次の文字を入力できます．逆にコントロール・シンボルの後に\verb*| |を入力した場合は半角スペースがあるとして認識されます．つまり\verb*|\#3872|は\#3872と出力され，\verb*|\# 3872|は\# 3872として出力されます．先ほど出てきた\verb*|\ |は半角スペースを出力するコントロール・シンボルです．
+
+\LaTeX のコマンドには今まで出てきた引数を持たないものだけでなく，引数を持つものもあります．引数を持つコマンドは\verb*|\|<\textit{command}>\verb*|[|<\textit{option}>\verb*|]{|<\textit{parameter}>\verb*|}|のような形をしています．<\textit{parameter}>には必須の引数が入り，<\textit{option}>には必須ではない引数が入ります．複数のオプションをまとめて指定する場合は「,」で区切って入力します．オプションを指定しないときは\verb*|[]|は必要ありません．必須の引数はコマンドごとに個数が決まっており，その個数より\verb*|{}|の個数が少ない場合はエラーになります\footnote{多い場合はコマンドのあとに\texttt{\{\}}があるだけというふうに認識されるので問題ありません．}．ただし，必須の引数が1つのみの場合はコマンドの次の文字（コマンドの次に来るのが文字ではなく別のコマンドの場合はそのコマンド）が引数として扱われるので\verb*|{}|がなくてもエラーになりません．引数に何も指定しないときは\verb*|{}|のように空の引数を指定しましょう．\verb*|{\|<\textit{command}>\ <\textit{parameter}>\verb*|}|のような形をしているコマンド存在しています．表\ref{ookisa}のような文字の大きさを変更するコマンドはこの形をしています．
+\begin{table}
+	\centering
+	\caption{文字の大きさを変更するコマンド}
+	\label{ookisa}
+	\begin{tabular}{cc}
+		コマンド                  & 出力                 \\ \hline
+		\verb*|\tiny|         & {\tiny aA}         \\
+		\verb*|\scriptsize|   & {\scriptsize aA}   \\
+		\verb*|\footnotesize| & {\footnotesize aA} \\
+		\verb*|\small|        & {\small aA}        \\
+		\verb*|\normalsize|   & {\normalsize aA}   \\
+		\verb*|\large|        & {\large aA}        \\
+		\verb*|\Large|        & {\Large aA}        \\
+		\verb*|\LARGE|        & {\LARGE aA}        \\
+		\verb*|\huge|         & {\huge aA}         \\
+		\verb*|\Huge|         & {\Huge aA}
+	\end{tabular}
+\end{table}
+
+\verb*|\begin{|<\textit{environment}>\verb*|}|と\verb*|\end{|<\textit{environment}>\verb*|}|で挟んだ部分を<\textit{environment}>環境と呼びます．<\textit{environment}>の部分が\verb*|\begin{|<\textit{environment}>\verb*|}|と\verb*|\end{|<\textit{environment}>\verb*|}|で異なっている場合はエラーになります．
+
+\subsection{texファイルの構造}
+texファイルの構造はdocumentclassコマンド，プリアンブル，document環境の3つからなります．documentclassコマンドではdocumentclass（これによって文書の書式が決まります）の読み込みと文書全体に関するオプションの指定を行います．プリアンブルはdocumentclassコマンドとdocument環境の間のことでパッケージの読み込みや設定，オリジナルのコマンドの定義を行います．document環境には文書の中身を記述します．
